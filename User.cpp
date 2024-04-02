@@ -1,6 +1,4 @@
-//
-// Created by Michael Helzer on 3/27/24.
-//
+
 
 #include "User.h"
 #include <iostream>
