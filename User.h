@@ -1,6 +1,4 @@
-//
-// Created by Michael Helzer on 3/27/24.
-//
+
 
 #ifndef FINAL_PROJECT_USER_H
 #define FINAL_PROJECT_USER_H
