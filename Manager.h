@@ -1,0 +1,14 @@
+
+
+#ifndef ADVANCED_BANK_MANAGEMENT_SYSTEM_MANAGER_H
+#define ADVANCED_BANK_MANAGEMENT_SYSTEM_MANAGER_H
+
+
+class Manager {
+public:
+    void login_manager();
+
+};
+
+
+#endif //ADVANCED_BANK_MANAGEMENT_SYSTEM_MANAGER_H
