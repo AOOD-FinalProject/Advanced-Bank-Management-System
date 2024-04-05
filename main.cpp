@@ -1,6 +1,6 @@
 #include "User.h"
 #include "Manager.h"
-#include <cstdlib> // for exit()
+
 
 int main() {
     //initialize variables
@@ -56,7 +56,7 @@ int main() {
                     }
                 }
                 UsersTextFile.close();
-            } while (match == true);
+            } while (match);
 
             cout << "Enter Password: " << endl;
             cin >> passWord;
