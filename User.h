@@ -1,20 +1,21 @@
-
-
-#ifndef FINAL_PROJECT_USER_H
-#define FINAL_PROJECT_USER_H
+#ifndef ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
+#define ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
+#include <iostream>
+#include <fstream>
 #include <string>
+using namespace std;
+#include "BankAccount.h"
 
-class User{
-public:
-    void create_User();
-    void remove_User();
-    void login_User(string userName, string passWord);
-    int withdraw(int withdraw_amount);
-    int deposit(int deposit_amount);
-
+class User {
 private:
-    //int get_account_value();
+	string Name;
+	int userID;
+public:
+	User() {}
+	~User() {}
+	virtual void login(string userName, string passWord);
+	void create(string userName, string passWord);
 
 };
 
-#endif //FINAL_PROJECT_USER_H
+#endif //ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
