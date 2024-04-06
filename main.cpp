@@ -1,17 +1,15 @@
 #include "User.h"
 #include "Manager.h"
+#include "Transaction.h"
 #include <cstdlib> // for exit()
 
 int main() {
     //initialize variables
     int ans;
+    bool menu = true;
     string userName;
     string passWord;
     User* user;
-    bool menu = true;
-    fstream UsersTextFile;
-    bool match = false;
-    string u;
 
     //do while loop to validate input
     do {
@@ -38,29 +36,7 @@ int main() {
         //create user login case
         case 2:
             user = new User();
-
-            // Check to see if Username is already in text file
-            do {
-                match = false;
-                cout << "Enter Username: " << endl;
-                cin >> userName;
-                UsersTextFile.open("Users.txt");
-                while (UsersTextFile)
-                {
-                    getline(UsersTextFile, u, ';');
-                    if (u == userName)
-                    {
-                        cout << "Username already in use.\n" << endl;
-                        match = true;
-                        break;
-                    }
-                }
-                UsersTextFile.close();
-            } while (match == true);
-
-            cout << "Enter Password: " << endl;
-            cin >> passWord;
-            user->create(userName, passWord);
+            user->create();
             delete user;
             break;
         //manager login case

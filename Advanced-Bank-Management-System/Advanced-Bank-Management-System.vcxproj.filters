@@ -21,6 +21,12 @@
     <Text Include="Managers.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="temp.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Transactions.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md">
@@ -34,12 +40,12 @@
     <ClInclude Include="..\User.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\BankAccount.h">
+    <ClInclude Include="..\Transaction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\BankAccount.cpp">
+    <ClCompile Include="..\Transaction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\main.cpp">

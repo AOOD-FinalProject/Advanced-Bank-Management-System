@@ -4,18 +4,34 @@
 #include <fstream>
 #include <string>
 using namespace std;
-#include "BankAccount.h"
 
 class User {
 private:
-	string Name;
-	int userID;
+	int balance;
+	static int accountNumber;
 public:
-	User() {}
-	~User() {}
+	fstream UsersTextFile;
+	ofstream temp;
+	string user;
+	string pass;
+	string accNum;
+	string bal;
+	string userName;
+	string passWord;
+	string line;
+	string Name;
+	string accountType;
+	bool match = false;
+	bool menu = true;
+	int ans;
+	static int activeAccount;
+	User();
+	~User();
 	virtual void login(string userName, string passWord);
-	void create(string userName, string passWord);
-
+	void create();
+	//int getBalance();
+	//string getName();
+	//string getAccountType();
 };
 
 #endif //ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
