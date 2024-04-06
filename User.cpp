@@ -19,7 +19,7 @@ void User::login(string userName, string passWord) {
     //open file successfully
     //validate Username and Password with Username and Password in text file
     else {
-        while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass, ';'), getline(UsersTextFile, line))
+        while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass, ';'), getline(UsersTextFile, accNum, ';'), getline(UsersTextFile, Name, ';'), getline(UsersTextFile, accountType, ';'), getline(UsersTextFile, bal))
         {
             if (user == userName && pass == passWord)
             {
@@ -39,7 +39,13 @@ void User::login(string userName, string passWord) {
 
     //user login welcome page
     do {
-        cout << "Welcome User: " << userName << endl;
+        cout << userName << "'s Bank Account" << endl;
+        cout << "---------------------------" << endl;
+        cout << "Name: " << Name << endl;
+        cout << "Account Number: " << accNum << endl;
+        cout << "Account Type: " << accountType << endl;
+        cout << "Balance: " << bal << endl;
+        cout << "---------------------------" << endl;
         cout << "1. Withdraw" << endl;
         cout << "2. Deposit" << endl;
         cout << "3. Account Summary" << endl;
