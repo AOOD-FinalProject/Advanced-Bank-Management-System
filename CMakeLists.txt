@@ -12,4 +12,6 @@ add_executable(Advanced_Bank_Management_System
         BankAccount.cpp
         BankAccount.h
         User.cpp
-        User.h)
+        User.h
+        Transaction.cpp
+        Transaction.h)

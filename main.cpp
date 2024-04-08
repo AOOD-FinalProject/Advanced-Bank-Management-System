@@ -86,5 +86,6 @@ int main() {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     } while (0 < ans < 5 && menu == true);
 
-    return 0;
+    // This is out of reach and doesn't need to be here to function
+    // return 0;
 }

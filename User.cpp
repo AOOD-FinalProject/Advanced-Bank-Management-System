@@ -45,6 +45,8 @@ void User::create(string userName, string passWord) {
     // Open file successfully
     else {
         // Write to the file
+        UsersTextFile << "Username of account: " << userName << "\nPassword of account: " << passWord << endl;
+        //
         UsersTextFile << userName << ";" << passWord << endl;
         cout << "User successfully created.\n" << endl;
     }
