@@ -1,6 +1,6 @@
 #include "User.h"
 #include "Manager.h"
-
+#include <cstdlib> // for exit()
 
 int main() {
     //initialize variables
@@ -56,7 +56,7 @@ int main() {
                     }
                 }
                 UsersTextFile.close();
-            } while (match);
+            } while (match == true);
 
             cout << "Enter Password: " << endl;
             cin >> passWord;
@@ -86,6 +86,5 @@ int main() {
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
     } while (0 < ans < 5 && menu == true);
 
-    // This is out of reach and doesn't need to be here to function
-    // return 0;
+    return 0;
 }

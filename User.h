@@ -12,7 +12,7 @@ private:
 	int userID;
 public:
 	User() {}
-	~User() = default;
+	~User() {}
 	virtual void login(string userName, string passWord);
 	void create(string userName, string passWord);
 

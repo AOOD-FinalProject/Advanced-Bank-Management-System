@@ -35,11 +35,3 @@ void Manager::login(string userName, string passWord) {
     // Close text file
     ManagerTextFile.close();
 }
-
-void Manager::remove(string userName, string passWord) {
-
-}
-
-void Manager::load(string userName, int accountNumber) {
-
-}

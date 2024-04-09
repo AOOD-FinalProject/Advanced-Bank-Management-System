@@ -8,8 +8,8 @@ private:
 	int managerID;
 public:
 	Manager() {}
-	~Manager() = default;
-	void login(string userName, string passWord) override;
+	~Manager() {}
+	void login(string userName, string passWord);
 	void remove(string userName, string passWord);
 	void load(string userName, int accountNumber);
 };
