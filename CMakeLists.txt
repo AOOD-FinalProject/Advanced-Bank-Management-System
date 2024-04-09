@@ -9,8 +9,6 @@ add_executable(Advanced_Bank_Management_System
         main.cpp
         Manager.cpp
         Manager.h
-        BankAccount.cpp
-        BankAccount.h
         User.cpp
         User.h
         Transaction.cpp
