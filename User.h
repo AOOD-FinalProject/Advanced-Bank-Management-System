@@ -3,11 +3,12 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cctype>
 using namespace std;
 
 class User {
 private:
-	int balance;
+	float balance;
 	static int accountNumber;
 public:
 	fstream UsersTextFile;
@@ -15,23 +16,18 @@ public:
 	string user;
 	string pass;
 	string accNum;
-	string bal;
-	string userName;
-	string passWord;
-	string line;
 	string Name;
-	string accountType;
+	string accountType;	
+	string bal;
+	string line;
 	bool match = false;
 	bool menu = true;
 	int ans;
-	static int activeAccount;
+	static int activeAccounts;
 	User();
 	~User();
 	virtual void login(string userName, string passWord);
 	void create();
-	//int getBalance();
-	//string getName();
-	//string getAccountType();
 };
 
 #endif //ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H

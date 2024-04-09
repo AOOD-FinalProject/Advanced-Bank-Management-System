@@ -55,12 +55,10 @@ int main() {
             return 0;
         //default case
         default:
+            //clear error input due to input type doesn't match and ignore input
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Invalid choice. Please enter a number between 1 and 4.\n" << endl;
         }
-        //prevent infinite loop when characters are entered instead of integer
-        cin.clear();
-        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    } while (0 < ans < 5 && menu == true);
-
-    return 0;
+    } while (menu == true);
 }

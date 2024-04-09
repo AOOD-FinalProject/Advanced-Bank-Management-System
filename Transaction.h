@@ -4,10 +4,6 @@
 class Transaction
 {
 private:
-	int accountNumber;
-	string accountType;
-	int balance;
-	string Name;
 public:
 	Transaction();
 	~Transaction();

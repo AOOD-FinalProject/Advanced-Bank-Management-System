@@ -20,7 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="Managers.txt" />
-    <Text Include="temp.txt" />
     <Text Include="Transactions.txt" />
     <Text Include="Users.txt" />
   </ItemGroup>

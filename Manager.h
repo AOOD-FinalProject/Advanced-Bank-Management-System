@@ -4,14 +4,13 @@
 
 class Manager : public User {
 private:
-	string Name;
 public:
 	fstream ManagerTextFile;
 	Manager();
 	~Manager();
 	void login(string userName, string passWord);
-	void removeAccount(string userName, int accountNumber);
-	void loadAccount(string userName, int accountNumber);
+	void removeAccount(string userName, string accountNumber);
+	void loadAccount(string userName, string accountNumber);
 
 };
 
