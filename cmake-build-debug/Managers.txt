@@ -1,3 +1,0 @@
-Thong;banana
-Anastasiia;password
-Michael;password
