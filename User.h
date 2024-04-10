@@ -26,7 +26,7 @@ public:
     static int activeAccounts;
     User();
     ~User();
-    virtual void login(string userName, string passWord);
+    virtual void login(string& userName, string& passWord);
     void create();
 };
 

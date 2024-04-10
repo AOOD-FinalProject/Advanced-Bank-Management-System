@@ -1,7 +1,5 @@
 #include "User.h"
 #include "Manager.h"
-#include "Transaction.h"
-#include <cstdlib> // for exit()
 
 int main() {
     //initialize variables
