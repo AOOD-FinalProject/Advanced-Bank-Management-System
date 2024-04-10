@@ -1,5 +1,6 @@
 #include "User.h"
 
+//keep here or move?
 //function to take only letters and numbers as input
 bool isAlphaNumeric(string input) {
     for (char c : input) {
@@ -16,12 +17,14 @@ int User::accountNumber;
 int User::activeAccounts;
 
 //constructor and deconstructor
-User::User() {}
+User::User() { 
+    int ans = 0; 
+    float balance = 0; 
+}
 User::~User() {}
 
-
 //function for user login
-void User::login(string& userName, string& passWord) {
+void User::login(string userName, string passWord) {
     match = false;
     //open text file
     UsersTextFile.open("Users.txt");
@@ -32,8 +35,8 @@ void User::login(string& userName, string& passWord) {
         return;
     }
 
-        //open file successfully
-        //validate Username and Password with Username and Password in text file
+    //open file successfully
+    //validate Username and Password with Username and Password in text file
     else {
         while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass, ';'), getline(UsersTextFile, accNum, ';'), getline(UsersTextFile, Name, ';'), getline(UsersTextFile, accountType, ';'), getline(UsersTextFile, bal)) {
             if (user == userName && pass == passWord) {//continue if Username and Password matches with Username and Password in text file
@@ -71,24 +74,24 @@ void User::login(string& userName, string& passWord) {
         //case base on input
         switch (ans) {
             //withdraw case
-            case 1:
-                break;
-                //deposit case
-            case 2:
-                break;
-                //account summary case
-            case 3:
-                break;
-                //exit case
-            case 4:
-                cout << "Returning to menu.\n" << endl;
-                return;
-                //default case
-            default:
-                //clear error input due to input type doesn't match and ignore input
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                cout << "Invalid choice. Please enter a number between 1 and 4.\n" << endl;
+        case 1:             
+            break;
+            //deposit case
+        case 2:
+            break;
+            //account summary case
+        case 3:
+            break;
+            //exit case
+        case 4:
+            cout << "Returning to menu.\n" << endl;
+            return;
+            //default case
+        default:
+            //clear error input due to input type doesn't match and ignore input
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid choice. Please enter a number between 1 and 4.\n" << endl;
         }
     } while (menu == true);
 }
@@ -96,12 +99,12 @@ void User::login(string& userName, string& passWord) {
 //function to create user login
 void User::create() {
     //enter in Username
-    do {
+    do { 
         //check to see if user enter only letters and numbers
-        do {
+        do { 
             cout << "Enter Username: " << endl;
             cin >> user;
-        } while (!isAlphaNumeric(user));
+        } while (!isAlphaNumeric(user)); 
 
         //check to see if Username is already in text file
         match = false;
@@ -158,9 +161,9 @@ void User::create() {
     UsersTextFile.open("Users.txt", ios::app);
     //fail to open file
     if (!UsersTextFile) {
-        cout << "No such file found.\n" << endl;
+    cout << "No such file found.\n" << endl;
     }
-        //open file successfully
+    //open file successfully
     else {
         //write to the file
         UsersTextFile << user << ";" << pass << ";" << accountNumber << ";" << Name << ";" << accountType << ";" << balance << endl;
