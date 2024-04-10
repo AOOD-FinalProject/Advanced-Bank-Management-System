@@ -1,7 +1,5 @@
 #include "User.h"
 #include "Manager.h"
-#include "fstream"
-
 
 int main() {
     int ans;
