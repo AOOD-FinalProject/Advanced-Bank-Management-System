@@ -1,6 +1,0 @@
-# ninja log v5
-5	302	1712589537405425761	CMakeFiles/Advanced_Bank_Management_System.dir/BankAccount.cpp.o	e4147540efb18f44
-4	309	1712589782715013120	CMakeFiles/Advanced_Bank_Management_System.dir/main.cpp.o	3883cefc099d702f
-309	348	1712589782755899900	Advanced_Bank_Management_System	14f49dc5d6b5e83c
-5	314	1712589537418277344	CMakeFiles/Advanced_Bank_Management_System.dir/Manager.cpp.o	bb0105596b7e395e
-5	315	1712589537419503443	CMakeFiles/Advanced_Bank_Management_System.dir/User.cpp.o	9fb609b98ae9dfdc
