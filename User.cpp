@@ -19,8 +19,9 @@ int User::activeAccounts;
 User::User() {}
 User::~User() {}
 
+
 //function for user login
-void User::login(string userName, string passWord) {
+void User::login(string& userName, string& passWord) {
     match = false;
     //open text file
     UsersTextFile.open("Users.txt");
