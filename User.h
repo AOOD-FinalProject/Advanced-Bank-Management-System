@@ -3,22 +3,31 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cctype>
 using namespace std;
-//#include "BankAccount.h"
 
 class User {
 private:
-	string Name;
-	int userID;
+    float balance;
+    static int accountNumber;
 public:
-	User() {}
-	~User() {}
-
-	virtual void login(string& userName, string& passWord);
-    void create(string& userName, string& passWord);
-
-    void getLogin();
-    void createUser();
+    fstream UsersTextFile;
+    ofstream temp;
+    string user;
+    string pass;
+    string accNum;
+    string Name;
+    string accountType;
+    string bal;
+    string line;
+    bool match = false;
+    bool menu = true;
+    int ans;
+    static int activeAccounts;
+    User();
+    ~User();
+    virtual void login(string userName, string passWord);
+    void create();
 };
 
 #endif //ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
