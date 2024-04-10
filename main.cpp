@@ -9,6 +9,7 @@ int main() {
     string userName;
     string passWord;
     User* user;
+    Manager* manager;
     bool menu = true;
     fstream UsersTextFile;
     bool match = false;
@@ -40,13 +41,9 @@ int main() {
             break;
         //manager login case
         case 3:
-            user = new Manager();
-            cout << "Enter Username: " << endl;
-            cin >> userName;
-            cout << "Enter Password: " << endl;
-            cin >> passWord;
-            user->login(userName, passWord);
-            delete user;
+            manager = new Manager();
+            manager->getMLogin();
+            delete manager;
             break;
             //exit case
         case 4:

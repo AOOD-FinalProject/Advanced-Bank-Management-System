@@ -2,7 +2,7 @@
 fstream ManagerTextFile;
 
 //function for manager login
-void Manager::login(string userName, string passWord) {
+void Manager::login(string& userName, string& passWord) {
     bool match = false;
     string u;
     string p;
@@ -34,4 +34,13 @@ void Manager::login(string userName, string passWord) {
     }
     // Close text file
     ManagerTextFile.close();
+}
+
+void Manager::getMLogin() {
+    string userName, passWord;
+    cout << "Enter Username: " << endl;
+    cin >> userName;
+    cout << "Enter Password: " << endl;
+    cin >> passWord;
+    login(userName, passWord);
 }

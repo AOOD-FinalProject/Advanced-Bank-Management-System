@@ -9,9 +9,11 @@ private:
 public:
 	Manager() {}
 	~Manager() {}
-	void login(string userName, string passWord);
+	void login(string& userName, string& passWord);
 	void remove(string userName, string passWord);
 	void load(string userName, int accountNumber);
+
+    void getMLogin();
 };
 
 
