@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="AccNumActAcc.txt" />
     <Text Include="BankAccounts.txt" />
     <Text Include="Managers.txt" />
     <Text Include="Transactions.txt" />

@@ -5,42 +5,56 @@ int BankAccount::accountNumber = 0;
 int BankAccount::activeAccounts = 0;
 
 //constructor and deconstructor
-BankAccount::BankAccount() {}
+BankAccount::BankAccount() { 
+    AccNumActAccTextFile.open("AccNumActAcc.txt");
+    //fail to open file
+    if (!AccNumActAccTextFile) {
+        cout << "No such file found.\n" << endl;
+    }
+    //open file successfully
+    else {
+        AccNumActAccTextFile >> accountNumber;
+        AccNumActAccTextFile >> activeAccounts;
+    }
+    //close the file
+    AccNumActAccTextFile.close();
+    bankAccountMenu = true;
+}
+
 BankAccount::~BankAccount() {}
 
 //function for load bank info
 void BankAccount::loadBankAccount(string userName) {
-    myVector.clear();
-    currentUserAccounts = 0;
-    //open text file
-    BankAccountsTextFile.open("BankAccounts.txt");
+    do {
+        myVector.clear();
+        currentUserAccounts = 0;
+        //open text file
+        BankAccountsTextFile.open("BankAccounts.txt");
 
-    //fail to open file
-    if (!BankAccountsTextFile) {
-        cout << "No such file found.\n" << endl;
-        return;
-    }
+        //fail to open file
+        if (!BankAccountsTextFile) {
+            cout << "No such file found.\n" << endl;
+            return;
+        }
 
-    //open file successfully
-    //validate Username with Username in text file and load accounts accordingly
-    else {
-        while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, accountType, ';'), getline(BankAccountsTextFile, bal)) {
-            if (userID == userName) {
-                currentUserAccounts++;
-                myVector.push_back(userID);
-                myVector.push_back(Name);
-                myVector.push_back(accNum);
-                myVector.push_back(accountType);
-                myVector.push_back(bal);
+        //open file successfully
+        //validate Username with Username in text file and load accounts accordingly
+        else {
+            while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, accountType, ';'), getline(BankAccountsTextFile, bal)) {
+                if (userID == userName) {
+                    currentUserAccounts++;
+                    myVector.push_back(userID);
+                    myVector.push_back(Name);
+                    myVector.push_back(accNum);
+                    myVector.push_back(accountType);
+                    myVector.push_back(bal);
+                }
             }
         }
-    }
 
-    //close file
-    BankAccountsTextFile.close();
+        //close file
+        BankAccountsTextFile.close();
 
-    //prompt user login welcome page
-    do {
         //display bank account info according to the numbers of bank accounts the user have
         cout << userName << "'s Bank Account" << endl;
         cout << "---------------------------" << endl;
@@ -78,7 +92,7 @@ void BankAccount::loadBankAccount(string userName) {
                 cout << "User already have both a checking and saving accounts.\n" << endl;
             }
             else { addAccount(userName); }
-            loadBankAccount(userName);
+            break;
             //withdraw case
         case 2:
             break;
@@ -97,7 +111,6 @@ void BankAccount::loadBankAccount(string userName) {
                 return;
             }*/
             cout << "Returning to menu.\n" << endl;
-            bankAccountMenu = false;
             return;
             //default case
         default:
@@ -167,18 +180,21 @@ void BankAccount::addAccount(string userName) {
     //append all info to file
     //open text file
     BankAccountsTextFile.open("BankAccounts.txt", ios::app);
+    AccNumActAccTextFile.open("AccNumActAcc.txt", ios::out);
     //fail to open file
-    if (!BankAccountsTextFile) {
+    if (!BankAccountsTextFile && !AccNumActAccTextFile) {
         cout << "No such file found.\n" << endl;
     }
     //open file successfully
     else {
         //write to the file
         BankAccountsTextFile << userName << ";" << Name << ";" << accountNumber << ";" << accountType << ";" << fixed << setprecision(2) << balance << endl;
-        cout << "Account successfully created.\n" << endl;
+        AccNumActAccTextFile << accountNumber << endl << activeAccounts << endl;
+        cout << "Bank account successfully created.\n" << endl;
     }
     //close the file
     BankAccountsTextFile.close();
+    AccNumActAccTextFile.close();
 }
 
 //getter function for activeAccounts
@@ -191,26 +207,44 @@ void BankAccount::setActiveAccounts(int accAct) {
     activeAccounts = accAct;
 }
 
+//getter function for accountNumber
+int BankAccount::getAccountNumber() {
+    return accountNumber;
+}
+
+//setter function for accountNumber
+void BankAccount::setAccountNumber(int number) {
+    accountNumber = number;
+}
+
 //function for manager to remove bank account
 void BankAccount::removeBankAccount(string userName, string accountNumber) {
     accountExist = false;
     //open text file
     BankAccountsTextFile.open("BankAccounts.txt");
+    AccNumActAccTextFile.open("AccNumActAcc.txt");
     temp.open("temp.txt");
 
     //fail to open file
-    if (!BankAccountsTextFile || !temp) {
+    if (!BankAccountsTextFile && !temp && !AccNumActAccTextFile) {
         cout << "No such file found.\n" << endl;
         return;
     }
 
     //open file successfully
     //validate Username and accountNumber with Username and accountNumber in text file and remove account accordingly
+   
     else {
+        AccNumActAccTextFile >> actAcc;
+        AccNumActAccTextFile >> activeAccounts;
+        AccNumActAccTextFile.close();
+        AccNumActAccTextFile.open("AccNumActAcc.txt", ios::out);
         while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, line)) {
             if (userID == userName && accNum == accountNumber) {//if account match, don't write to temp text file and decrease activeAccounts
                 activeAccounts--;
                 cout << "Remove account successfully.\n" << "Numbers of Active Accounts: " << activeAccounts << "\n" << endl;
+                AccNumActAccTextFile << actAcc << endl;
+                AccNumActAccTextFile << activeAccounts << endl;
                 accountExist = true;
             }
             else {//write any accounts that doesn't match to temp text file
@@ -224,6 +258,7 @@ void BankAccount::removeBankAccount(string userName, string accountNumber) {
 
     //close text file
     BankAccountsTextFile.close();
+    AccNumActAccTextFile.close();
     temp.close();
 
     //remove old Users.txt file and rename temp to new Users.txt file

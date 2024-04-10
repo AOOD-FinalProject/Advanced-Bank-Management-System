@@ -7,6 +7,8 @@
 class Manager : public User, public BankAccount {
 private:
 	//any private?
+	int aN;
+	int aA;
 public:
 	bool managerMenu;//private?
 

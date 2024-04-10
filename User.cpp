@@ -36,9 +36,9 @@ int User::login(string userName, string passWord) {
 
 //function to create user login
 string User::createUser() {
-    //matches = false;
     //enter in Username
     do { 
+        matches = false;
         //check to see if user enter only letters and numbers
         do { 
             cout << "Enter Username: " << endl;
@@ -118,7 +118,7 @@ void User::removeUser(string userName) {
     temp.open("temp.txt");
 
     //fail to open file
-    if (!TextFile || !temp) {
+    if (!TextFile && !temp) {
         cout << "No such file found.\n" << endl;
         return;
     }

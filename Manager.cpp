@@ -1,7 +1,10 @@
 #include "Manager.h"
 
 //constructor and deconstructor
-Manager::Manager() { managerMenu = true; }
+Manager::Manager() { 
+    
+    managerMenu = true; 
+}
 Manager::~Manager() {}
 
 //function for manager login

@@ -18,6 +18,7 @@ public:
 	int ans;
 	//use for adding and removing accounts
 	bool accountExist;
+	int actAcc;
 	//vector use to store accounts //private?
 	vector<string> myVector;
 
@@ -29,5 +30,7 @@ public:
 	void addAccount(string userName);
 	int getActiveAccounts();
 	void setActiveAccounts(int accAct);
+	int getAccountNumber();
+	void setAccountNumber(int number);
 };
 
