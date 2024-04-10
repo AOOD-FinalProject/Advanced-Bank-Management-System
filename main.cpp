@@ -4,16 +4,10 @@
 
 
 int main() {
-    //initialize variables
     int ans;
-    string userName;
-    string passWord;
     User* user;
     Manager* manager;
     bool menu = true;
-    fstream UsersTextFile;
-    bool match = false;
-    string u;
 
     //do while loop to validate input
     do {
