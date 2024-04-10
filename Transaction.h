@@ -1,8 +1,7 @@
 #pragma once
 #include "User.h"
 
-class Transaction
-{
+class Transaction {
 private:
 public:
     Transaction();

@@ -1,6 +1,7 @@
 #include "User.h"
 #include "Manager.h"
-#include <cstdlib> // for exit()
+#include "fstream"
+
 
 int main() {
     //initialize variables
@@ -28,39 +29,13 @@ int main() {
         //user login case
         case 1:
             user = new User();
-            cout << "Enter Username: " << endl;
-            cin >> userName;
-            cout << "Enter Password: " << endl;
-            cin >> passWord;
-            user->login(userName, passWord);
+            user->getLogin();
             delete user;
             break;
         //create user login case
         case 2:
             user = new User();
-
-            // Check to see if Username is already in text file
-            do {
-                match = false;
-                cout << "Enter Username: " << endl;
-                cin >> userName;
-                UsersTextFile.open("Users.txt");
-                while (UsersTextFile)
-                {
-                    getline(UsersTextFile, u, ';');
-                    if (u == userName)
-                    {
-                        cout << "Username already in use.\n" << endl;
-                        match = true;
-                        break;
-                    }
-                }
-                UsersTextFile.close();
-            } while (match == true);
-
-            cout << "Enter Password: " << endl;
-            cin >> passWord;
-            user->create(userName, passWord);
+            user->createUser();
             delete user;
             break;
         //manager login case

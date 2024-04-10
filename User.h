@@ -13,9 +13,12 @@ private:
 public:
 	User() {}
 	~User() {}
-	virtual void login(string userName, string passWord);
-	void create(string userName, string passWord);
 
+	virtual void login(string& userName, string& passWord);
+    void create(string& userName, string& passWord);
+
+    void getLogin();
+    void createUser();
 };
 
 #endif //ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
