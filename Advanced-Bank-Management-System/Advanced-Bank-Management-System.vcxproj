@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="BankAccounts.txt" />
     <Text Include="Managers.txt" />
     <Text Include="Transactions.txt" />
     <Text Include="Users.txt" />
@@ -27,11 +28,13 @@
     <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\BankAccount.h" />
     <ClInclude Include="..\Transaction.h" />
     <ClInclude Include="..\Manager.h" />
     <ClInclude Include="..\User.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\BankAccount.cpp" />
     <ClCompile Include="..\Transaction.cpp" />
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\Manager.cpp" />

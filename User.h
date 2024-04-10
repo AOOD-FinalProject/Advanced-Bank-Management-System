@@ -1,35 +1,34 @@
 #ifndef ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
 #define ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
 #include <iostream>
-#include <fstream>
+#include <fstream>//I/O files
 #include <string>
-#include <cctype>
+#include <iomanip>//setprecision()
+#include <vector>//vectors better than arrays
+
 using namespace std;
+
+//keep here or move?
+bool isAlphaNumeric(string input);
+bool isTwoDecimalPlaces(float input);
 
 class User {
 private:
-	float balance = 0;
-	static int accountNumber;
+	//any private?
 public:
-	fstream UsersTextFile;
-	ofstream temp;//ADD another text file for accountNumber and activeAccounts?
-	string user;
-	string pass;
-	string accNum;
-	string Name;
-	string accountType;	
-	string bal;
-	string line;
-	bool match = false;
-	bool menu = true;
-	int ans = 0;
-	static int activeAccounts;//private?
+	fstream TextFile;
+	ofstream temp;
+	//string use to read file
+	string username, user, pass;
+	bool matches;
+
 	User();
 	//copy constructor?
 	~User();
-	virtual void login(string userName, string passWord);
-	void create();
-	//getter and setter?
+	virtual int login(string userName, string passWord);
+	string createUser();
+	int userExist(string userName);
+	void removeUser(string userName);
 };
 
 #endif //ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H

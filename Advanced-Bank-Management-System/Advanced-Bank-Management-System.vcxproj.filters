@@ -24,6 +24,9 @@
     <Text Include="Transactions.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="BankAccounts.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\README.md">
@@ -40,6 +43,9 @@
     <ClInclude Include="..\Transaction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\BankAccount.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Transaction.cpp">
@@ -52,6 +58,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\BankAccount.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
