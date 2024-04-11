@@ -6,6 +6,7 @@ int BankAccount::activeAccounts = 0;
 
 //constructor and deconstructor
 BankAccount::BankAccount() { 
+    // initialize account number and active account from file
     AccNumActAccTextFile.open("AccNumActAcc.txt");
     //fail to open file
     if (!AccNumActAccTextFile) {
@@ -104,13 +105,7 @@ void BankAccount::loadBankAccount(string userName) {
             break;
             //exit case
         case 5:
-            //optional?
-            /*if (managerMenu = true) {
-                cout << "Returning to manager menu.\n" << endl;
-                bankAccountMenu = false;
-                return;
-            }*/
-            cout << "Returning to menu.\n" << endl;
+            cout << "Returning to previous menu.\n" << endl;
             return;
             //default case
         default:
@@ -233,7 +228,7 @@ void BankAccount::removeBankAccount(string userName, string accountNumber) {
 
     //open file successfully
     //validate Username and accountNumber with Username and accountNumber in text file and remove account accordingly
-   
+    //read account number and active account from file and update them accordingly
     else {
         AccNumActAccTextFile >> actAcc;
         AccNumActAccTextFile >> activeAccounts;
@@ -243,14 +238,14 @@ void BankAccount::removeBankAccount(string userName, string accountNumber) {
             if (userID == userName && accNum == accountNumber) {//if account match, don't write to temp text file and decrease activeAccounts
                 activeAccounts--;
                 cout << "Remove account successfully.\n" << "Numbers of Active Accounts: " << activeAccounts << "\n" << endl;
-                AccNumActAccTextFile << actAcc << endl;
-                AccNumActAccTextFile << activeAccounts << endl;
                 accountExist = true;
             }
             else {//write any accounts that doesn't match to temp text file
                 temp << userID << ';' << Name << ';' << accNum << ';' << line << endl;
             }
         }
+        AccNumActAccTextFile << actAcc << endl;
+        AccNumActAccTextFile << activeAccounts << endl;
         if (accountExist == false) {//no account remove
             cout << "Remove account fail.\n" << endl;
         }
@@ -267,4 +262,28 @@ void BankAccount::removeBankAccount(string userName, string accountNumber) {
         cout << "Rename file failed." << endl;
     }
     return;
+}
+
+void BankAccount::showAll() {
+    cout << "---------------------------" << endl;
+    //open text file
+    BankAccountsTextFile.open("BankAccounts.txt");
+    //fail to open file
+    if (!BankAccountsTextFile) {
+        cout << "No such file found.\n" << endl;
+        return;
+    }
+    //open file successfully
+    else {
+        while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, accountType, ';'), getline(BankAccountsTextFile, bal)) {
+            cout << "Username: " << userID << endl;
+            cout << "Name: " << Name << endl;
+            cout << "Account Number: " << accNum << endl;
+            cout << "Account Type: " << accountType << endl;
+            cout << "Balance: $" << bal << endl;
+            cout << "---------------------------\n" << endl;
+        }
+    }
+    //close file
+    BankAccountsTextFile.close();
 }

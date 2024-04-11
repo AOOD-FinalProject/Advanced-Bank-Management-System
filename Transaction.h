@@ -5,6 +5,7 @@ class Transaction
 {
 private:
 public:
+	fstream TransactionsTextFile;
 	Transaction();
 	//copy constructor?
 	~Transaction();

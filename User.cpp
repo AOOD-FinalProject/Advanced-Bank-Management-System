@@ -7,30 +7,29 @@ User::~User() {}
 //function for user login
 int User::login(string userName, string passWord) {
     //open text file
-    TextFile.open("Users.txt");
+    UsersTextFile.open("Users.txt");
 
     //fail to open file
-    if (!TextFile) {
+    if (!UsersTextFile) {
         cout << "No such file found.\n" << endl;
-        TextFile.close();
         return 0;
     }
 
     //open file successfully
     //validate Username and Password with Username and Password in text file
     else {
-        while (getline(TextFile, user, ';'), getline(TextFile, pass)) {
+        while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass)) {
             if (user == userName && pass == passWord) {
                 cout << "User successfully login.\n" << endl;
                 //close the file
-                TextFile.close();
+                UsersTextFile.close();
                 return 1;
             }
         } 
     }
     cout << "User login fail.\n" << endl;
     //close the file
-    TextFile.close();
+    UsersTextFile.close();
     return 0;
 }
 
@@ -46,14 +45,19 @@ string User::createUser() {
         } while (!isAlphaNumeric(username)); 
 
         //check to see if Username is already in text file
-        TextFile.open("Users.txt");
-        while (getline(TextFile, user, ';'),getline(TextFile, pass)) {
-            if (user == username) {
-                cout << "Username already in use. Try again.\n" << endl;
-                matches = true;
+        UsersTextFile.open("Users.txt");
+        if (!UsersTextFile) {
+            cout << "No such file found.\n" << endl;
+        }
+        else {
+            while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass)) {
+                if (user == username) {
+                    cout << "Username already in use. Try again.\n" << endl;
+                    matches = true;
+                }
             }
         }
-        TextFile.close();
+        UsersTextFile.close();
     } while (matches == true);
 
     //enter in Password
@@ -64,61 +68,61 @@ string User::createUser() {
 
     //append all info to file
     //open text file
-    TextFile.open("Users.txt", ios::app);
+    UsersTextFile.open("Users.txt", ios::app);
     //fail to open file
-    if (!TextFile) {
+    if (!UsersTextFile) {
         cout << "No such file found.\n" << endl;
     }
     //open file successfully
     else {
         //write to the file
-        TextFile << username << ";" << pass << endl;
+        UsersTextFile << username << ";" << pass << endl;
         cout << "User successfully created.\n" << endl;
     }
     //close the file
-    TextFile.close();
+    UsersTextFile.close();
     return username;
 }
 
 //function to check if a user account exist
 int User::userExist(string userName) {
     //open text file
-    TextFile.open("Users.txt");
+    UsersTextFile.open("Users.txt");
 
     //fail to open file
-    if (!TextFile) {
+    if (!UsersTextFile) {
         cout << "No such file found.\n" << endl;
-        TextFile.close();
         return 0;
     }
 
     //open file successfully
     //validate Username with Username in text file
     else {
-        while (getline(TextFile, user, ';'), getline(TextFile, pass)) {
+        while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass)) {
             if (user == userName) {
                 cout << "Access user account succesfully.\n" << endl;
                 //close the file
-                TextFile.close();
+                UsersTextFile.close();
                 return 1;
             }
         }
     }
     cout << "User doesn't exist.\n" << endl;
     //close the file
-    TextFile.close();
+    UsersTextFile.close();
     return 0;
 }
 
 //function to remove user account?
 void User::removeUser(string userName) {
-    //matches = false;
+    matches = false;
     //open text file
-    TextFile.open("Users.txt");
+    UsersTextFile.open("Users.txt");
+    TextFile.open("BankAccounts.txt");
     temp.open("temp.txt");
 
     //fail to open file
-    if (!TextFile && !temp) {
+    if (!TextFile && !temp && !UsersTextFile) {
         cout << "No such file found.\n" << endl;
         return;
     }
@@ -126,7 +130,16 @@ void User::removeUser(string userName) {
     //open file successfully
     //validate Username with Username in text file
     else {
-        while (getline(TextFile, user, ';'), getline(TextFile, pass)) {
+        while (getline(TextFile, username, ';'), getline(TextFile, line)) {
+            if (username == userName) {
+                cout << "There is still an open bank account for this user. Close bank accounts first and try again. \n" << endl;
+                UsersTextFile.close();
+                TextFile.close();
+                temp.close();
+                return;
+            }
+        }
+        while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass)) {
             if (user == userName) {//if user matches, don't write to temp text file
                 cout << "Remove user successfully.\n" << endl;
                 matches = true;
@@ -142,11 +155,12 @@ void User::removeUser(string userName) {
 
     //close text file
     TextFile.close();
+    UsersTextFile.close();
     temp.close();
 
     //remove old Users.txt file and rename temp to new Users.txt file
     remove("Users.txt");
-    if (rename("temp.txt", "Users.txt") == -1) {
+    if (rename("temp.txt", "Users.txt") == -1 ) {
         cout << "Rename file failed." << endl;
     }
     return;

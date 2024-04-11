@@ -10,16 +10,17 @@ using namespace std;
 
 //keep here or move?
 bool isAlphaNumeric(string input);
-bool isTwoDecimalPlaces(float input);
+bool isTwoDecimalPlaces(double input);
 
 class User {
 private:
 	//any private?
 public:
 	fstream TextFile;
+	fstream UsersTextFile;
 	ofstream temp;
 	//string use to read file
-	string username, user, pass;
+	string username, user, pass, line;
 	bool matches;
 
 	User();

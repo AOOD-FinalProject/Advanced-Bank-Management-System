@@ -1,5 +1,4 @@
 #include "Transaction.h"
-fstream TransactionTextFile;
 
 //constructor and deconstructor
 Transaction::Transaction() {}

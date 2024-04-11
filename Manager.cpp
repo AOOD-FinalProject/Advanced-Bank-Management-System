@@ -42,11 +42,12 @@ int Manager::login(string userName, string passWord) {
     //prompt manager login welcome page
     do {
         cout << "Welcome Manager: " << userName << endl;
-        cout << "1. Remove Account" << endl;
-        cout << "2. Load Account" << endl;
-        cout << "3. Show Number of Active Accounts" << endl;
-        //cout << "4. Remove User" << endl;//???
-        cout << "4. Exit\n" << endl;
+        cout << "1. Close Bank Account" << endl;
+        cout << "2. Load Bank Account" << endl;
+        cout << "3. Show Number of Active Bank Accounts" << endl;
+        cout << "4. Show All Bank Accounts" << endl;
+        cout << "5. Remove User" << endl;
+        cout << "6. Exit\n" << endl;
         cin >> ans;
 
         //case base on input
@@ -73,8 +74,18 @@ int Manager::login(string userName, string passWord) {
         case 3:
             cout << "Number of Active Accounts: " << getActiveAccounts() << "\n" << endl;
             break;
-            //exit case
+            //show all bank accounts case
         case 4:
+            showAll();
+            break;
+            //remove user account case
+        case 5:
+            cout << "Enter Account Username: " << endl;
+            cin >> user;
+            removeUser(user);
+            break;
+            //exit case
+        case 6:
             cout << "Returning to menu.\n" << endl;
             return 1;
             //default case

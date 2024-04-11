@@ -3,7 +3,7 @@
 
 class BankAccount{
 private:
-	float balance;
+	double balance;
 	static int accountNumber;
 	static int activeAccounts;
 public:
@@ -32,5 +32,6 @@ public:
 	void setActiveAccounts(int accAct);
 	int getAccountNumber();
 	void setAccountNumber(int number);
+	void showAll();
 };
 
