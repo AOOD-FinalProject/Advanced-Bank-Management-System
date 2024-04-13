@@ -18,8 +18,8 @@ int User::login(string userName, string passWord) {
     //open file successfully
     //validate Username and Password with Username and Password in text file
     else {
-        while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass)) {
-            if (user == userName && pass == passWord) {
+        while (getline(UsersTextFile, this->userName, ';'), getline(UsersTextFile, this->passWord)) {
+            if (this->userName == userName && this->passWord == passWord) {
                 cout << "User successfully login.\n" << endl;
                 //close the file
                 UsersTextFile.close();
@@ -41,8 +41,8 @@ string User::createUser() {
         //check to see if user enter only letters and numbers
         do { 
             cout << "Enter Username: " << endl;
-            cin >> username;
-        } while (!isAlphaNumeric(username)); 
+            cin >> userName;
+        } while (!isAlphaNumeric(userName));
 
         //check to see if Username is already in text file
         UsersTextFile.open("Users.txt");
@@ -50,8 +50,8 @@ string User::createUser() {
             cout << "No such file found.\n" << endl;
         }
         else {
-            while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass)) {
-                if (user == username) {
+            while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, passWord)) {
+                if (userName == user) {
                     cout << "Username already in use. Try again.\n" << endl;
                     matches = true;
                 }
@@ -63,10 +63,10 @@ string User::createUser() {
     //enter in Password
     do {
         cout << "Enter Password: " << endl;
-        cin >> pass;
-    } while (!isAlphaNumeric(pass));
+        cin >> passWord;
+    } while (!isAlphaNumeric(passWord));
 
-    //append all info to file
+    //append username and password to file
     //open text file
     UsersTextFile.open("Users.txt", ios::app);
     //fail to open file
@@ -76,12 +76,12 @@ string User::createUser() {
     //open file successfully
     else {
         //write to the file
-        UsersTextFile << username << ";" << pass << endl;
+        UsersTextFile << userName << ";" << passWord << endl;
         cout << "User successfully created.\n" << endl;
     }
     //close the file
     UsersTextFile.close();
-    return username;
+    return userName;
 }
 
 //function to check if a user account exist
@@ -98,8 +98,8 @@ int User::userExist(string userName) {
     //open file successfully
     //validate Username with Username in text file
     else {
-        while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass)) {
-            if (user == userName) {
+        while (getline(UsersTextFile, this->userName, ';'), getline(UsersTextFile, passWord)) {
+            if (this->userName == userName) {
                 cout << "Access user account succesfully.\n" << endl;
                 //close the file
                 UsersTextFile.close();
@@ -113,7 +113,7 @@ int User::userExist(string userName) {
     return 0;
 }
 
-//function to remove user account?
+//function to remove user account
 void User::removeUser(string userName) {
     matches = false;
     //open text file
@@ -130,8 +130,9 @@ void User::removeUser(string userName) {
     //open file successfully
     //validate Username with Username in text file
     else {
-        while (getline(TextFile, username, ';'), getline(TextFile, line)) {
-            if (username == userName) {
+        //prevent deletion of user account if user still have open bank accounts
+        while (getline(TextFile, this->userName, ';'), getline(TextFile, passWord)) {
+            if (this->userName == userName) {
                 cout << "There is still an open bank account for this user. Close bank accounts first and try again. \n" << endl;
                 UsersTextFile.close();
                 TextFile.close();
@@ -139,13 +140,14 @@ void User::removeUser(string userName) {
                 return;
             }
         }
-        while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, pass)) {
-            if (user == userName) {//if user matches, don't write to temp text file
+        //else delete user
+        while (getline(UsersTextFile, this->userName, ';'), getline(UsersTextFile, passWord)) {
+            if (this->userName == userName) {//if user matches, don't write to temp text file
                 cout << "Remove user successfully.\n" << endl;
                 matches = true;
             }
             else {//write any user that doesn't match to temp text file
-                temp << user << ';' << pass << endl;
+                temp << this->userName << ';' << passWord << endl;
             }
         }
         if (matches == false) {//no user remove

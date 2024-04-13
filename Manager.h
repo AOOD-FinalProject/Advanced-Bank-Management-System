@@ -3,7 +3,6 @@
 #include "User.h"
 #include "BankAccount.h"
 
-//can manager be subclass of 2 class?
 class Manager : public User, public BankAccount {
 private:
 	//any private?

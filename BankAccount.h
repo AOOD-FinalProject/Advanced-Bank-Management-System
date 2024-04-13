@@ -1,26 +1,30 @@
 #pragma once
-#include "User.h"
+#include "ValidInput.h"
+#include "Transaction.h"
 
-class BankAccount{
+class BankAccount : public ValidInput, public Transaction {
 private:
 	double balance;
 	static int accountNumber;
 	static int activeAccounts;
 public:
 	fstream BankAccountsTextFile;
-	fstream AccNumActAccTextFile;//ADD another text file for accountNumber and activeAccounts?
+	fstream AccNumActAccTextFile;
 	ofstream temp;
+
 	//string use to read file
-	string userID, Name, accNum, accountType, bal, line;
+	string userID, Name, accNum, accountType, bal, accType, storedName;
+
 	//use for bank account menu //private?
 	bool bankAccountMenu;
 	int currentUserAccounts;
 	int ans;
+
 	//use for adding and removing accounts
 	bool accountExist;
-	int actAcc;
+
 	//vector use to store accounts //private?
-	vector<string> myVector;
+	//vector<string> myVector;
 
 	BankAccount();
 	//copy constructor?

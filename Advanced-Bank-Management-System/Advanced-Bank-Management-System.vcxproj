@@ -33,6 +33,7 @@
     <ClInclude Include="..\Transaction.h" />
     <ClInclude Include="..\Manager.h" />
     <ClInclude Include="..\User.h" />
+    <ClInclude Include="..\ValidInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\BankAccount.cpp" />
@@ -40,6 +41,7 @@
     <ClCompile Include="..\main.cpp" />
     <ClCompile Include="..\Manager.cpp" />
     <ClCompile Include="..\User.cpp" />
+    <ClCompile Include="..\ValidInput.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

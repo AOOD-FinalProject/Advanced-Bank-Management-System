@@ -1,10 +1,7 @@
 #include "Manager.h"
 
 //constructor and deconstructor
-Manager::Manager() { 
-    
-    managerMenu = true; 
-}
+Manager::Manager() { managerMenu = true; }
 Manager::~Manager() {}
 
 //function for manager login
@@ -21,8 +18,8 @@ int Manager::login(string userName, string passWord) {
     //open file successfully
     //validate Username and Password with Username and Password in text file
     else {
-        while (getline(TextFile, user, ';'), getline(TextFile, pass)) {
-            if (user == userName && pass == passWord) {//continue if Username and Password matches with Username and Password in text file
+        while (getline(TextFile, User::userName, ';'), getline(TextFile, User::passWord)) {
+            if (User::userName == userName && User::passWord == passWord) {//continue if Username and Password matches with Username and Password in text file
                 cout << "Manager successfully login.\n" << endl;
                 matches = true;
                 //close text file
@@ -48,26 +45,24 @@ int Manager::login(string userName, string passWord) {
         cout << "4. Show All Bank Accounts" << endl;
         cout << "5. Remove User" << endl;
         cout << "6. Exit\n" << endl;
-        cin >> ans;
+        cin >> BankAccount::ans;
 
         //case base on input
-        switch (ans) {
+        switch (BankAccount::ans) {
             //remove account case
         case 1:
             cout << "Enter Account Username: " << endl;
-            cin >> user;
+            cin >> User::userName;
             cout << "Enter Account Number: " << endl;
-            cin >> accNum;
-            removeBankAccount(user, accNum);
+            cin >> BankAccount::accNum;
+            removeBankAccount(User::userName, BankAccount::accNum);
             break;
             //load user account case
         case 2:
             cout << "Enter Account Username: " << endl;
-            cin >> user;
-            /*cout << "Enter Account Number: " << endl;
-            cin >> accNum;*/
-            if (userExist(user) == 1) {
-                loadBankAccount(user);
+            cin >> User::userName;
+            if (userExist(User::userName) == 1) {
+                loadBankAccount(User::userName);
             }
             break;
             //show number of active accounts case
@@ -81,8 +76,8 @@ int Manager::login(string userName, string passWord) {
             //remove user account case
         case 5:
             cout << "Enter Account Username: " << endl;
-            cin >> user;
-            removeUser(user);
+            cin >> User::userName;
+            removeUser(User::userName);
             break;
             //exit case
         case 6:
