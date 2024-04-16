@@ -17,6 +17,8 @@ public:
 	bool bankAccountMenu;
 	int currentUserAccounts;
 	int ans;
+    double withdrawAmount, depositAmount;
+    double checkingBalance, savingsBalance;
 	//use for adding and removing accounts
 	bool accountExist;
 	int actAcc;

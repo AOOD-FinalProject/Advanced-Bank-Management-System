@@ -97,9 +97,78 @@ void BankAccount::loadBankAccount(string userName) {
             break;
             //withdraw case
         case 2:
+            cout << "Which account would you like to withdraw from?" << endl;
+            cout << "1. Checking" << endl;
+            cout << "2. Savings" << endl;
+            cout << "3. Exit" << endl;
+            cin >> ans;
+
+            do {
+                switch (ans) {
+                    case 1:
+                        cout << "Enter withdraw amount: $" << endl;
+                        cin >> withdrawAmount;
+                        // Need to call for the users checking balance here
+                        // checkingBalance =
+                        if ( withdrawAmount > checkingBalance) {
+                            cout << "Not enough funds for withdraw of that amount." << endl;
+                        }
+                        else {
+                            checkingBalance -= withdrawAmount;
+                            cout << "New checking balance is: $" << checkingBalance;
+                        }
+                    case 2:
+                        cout << "Enter withdraw amount: $" << endl;
+                        cin >> withdrawAmount;
+                        // Need to call for the users checking balance here
+                        // checkingBalance =
+                        if ( withdrawAmount > savingsBalance) {
+                            cout << "Not enough funds for withdraw of that amount." << endl;
+                        }
+                        else {
+                            savingsBalance -= withdrawAmount;
+                            cout << "New checking balance is: $" << savingsBalance;
+                        }
+                }
+            } while (ans != 3);
+
             break;
             //deposit case
         case 3:
+            cout << "Which account would you like to deposit to?" << endl;
+                cout << "1. Checking" << endl;
+                cout << "2. Savings" << endl;
+                cout << "3. Exit" << endl;
+                cin >> ans;
+
+                do {
+                    switch (ans) {
+                        case 1:
+                            cout << "Enter deposit amount: $" << endl;
+                            cin >> depositAmount;
+                            if (depositAmount <= 0) {
+                                cout << "Please enter a deposit amount greater than 0." << endl;
+                            }
+                            else {
+                                // Need to call for the users checking balance here
+                                // checkingBalance =
+                                checkingBalance += depositAmount;
+                                cout << "New checking balance is: $" << endl;
+                            }
+                        case 2:
+                            cout << "Enter deposit amount: $" << endl;
+                            cin >> depositAmount;
+                            if (depositAmount <= 0) {
+                                cout << "Please enter a deposit amount greater than 0." << endl;
+                            }
+                            else {
+                                // Need to call for the users savings balance here
+                                // savingsBalance =
+                                savingsBalance += depositAmount;
+                                cout << "New savings balance is: $" << endl;
+                            }
+                    }
+                } while (ans != 3);
             break;
             //account summary case
         case 4:
