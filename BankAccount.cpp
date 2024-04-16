@@ -288,12 +288,4 @@ void BankAccount::showAll() {
     BankAccountsTextFile.close();
 }
 
-bool isAlphaNumeric(const std::string& str) {
-    // Function to check if a string contains only alphanumeric characters
-    for (char c : str) {
-        if (!std::isalnum(c)) {
-            return false;
-        }
-    }
-    return true;
-}
+

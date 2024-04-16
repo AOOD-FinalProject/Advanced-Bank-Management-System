@@ -35,6 +35,14 @@ public:
 	void setAccountNumber(int number);
 	void showAll();
 
-    bool isAlphaNumeric(string basicString);
+    bool isAlphaNumeric(const std::string& str) {
+        // Function to check if a string contains only alphanumeric characters
+        for (char c : str) {
+            if (!std::isalnum(c)) {
+                return false;
+            }
+        }
+        return true;
+    }
 };
 
