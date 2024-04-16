@@ -1,7 +1,8 @@
 #pragma once
 #include "User.h"
+#include "vector"
 
-class BankAccount{
+class BankAccount {
 private:
 	double balance;
 	static int accountNumber;
@@ -33,5 +34,7 @@ public:
 	int getAccountNumber();
 	void setAccountNumber(int number);
 	void showAll();
+
+    bool isAlphaNumeric(string basicString);
 };
 

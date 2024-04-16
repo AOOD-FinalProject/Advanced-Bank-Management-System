@@ -1,4 +1,5 @@
 #include "BankAccount.h"
+#include "vector"
 
 //initialize static integers
 int BankAccount::accountNumber = 0;
@@ -162,10 +163,9 @@ void BankAccount::addAccount(string userName) {
     }
 
     //enter in balance
-    do {
-        cout << "Enter Balance:" << endl;
-        cin >> balance;
-    } while (!isTwoDecimalPlaces(balance));
+    cout << "Enter Balance: \n" << "Please include cents in your balance(ex: 100.55)" << endl;
+    cin >> balance;
+
 
     //give a bank account number and increase active account
     accountNumber++;
@@ -286,4 +286,14 @@ void BankAccount::showAll() {
     }
     //close file
     BankAccountsTextFile.close();
+}
+
+bool isAlphaNumeric(const std::string& str) {
+    // Function to check if a string contains only alphanumeric characters
+    for (char c : str) {
+        if (!std::isalnum(c)) {
+            return false;
+        }
+    }
+    return true;
 }
