@@ -1,50 +1,40 @@
 #pragma once
-#include "User.h"
-#include "vector"
+#include "ValidInput.h"
+#include "Transaction.h"
 
-class BankAccount {
+class BankAccount : public ValidInput, public Transaction {
 private:
-	double balance;
-	static int accountNumber;
-	static int activeAccounts;
+    double balance;
+    static int accountNumber;
+    static int activeAccounts;
 public:
-	fstream BankAccountsTextFile;
-	fstream AccNumActAccTextFile;//ADD another text file for accountNumber and activeAccounts?
-	ofstream temp;
-	//string use to read file
-	string userID, Name, accNum, accountType, bal, line;
-	//use for bank account menu //private?
-	bool bankAccountMenu;
-	int currentUserAccounts;
-	int ans;
-    double withdrawAmount, depositAmount;
-    double checkingBalance, savingsBalance;
-	//use for adding and removing accounts
-	bool accountExist;
-	int actAcc;
-	//vector use to store accounts //private?
-	vector<string> myVector;
+    fstream BankAccountsTextFile;
+    fstream AccNumActAccTextFile;
+    ofstream temp;
 
-	BankAccount();
-	//copy constructor?
-	~BankAccount();
-	void loadBankAccount(string userName);
-	void removeBankAccount(string userName, string passWord);
-	void addAccount(string userName);
-	int getActiveAccounts();
-	void setActiveAccounts(int accAct);
-	int getAccountNumber();
-	void setAccountNumber(int number);
-	void showAll();
+    //string use to read file
+    string userID, Name, accNum, accountType, bal, accType, storedName;
 
-    bool isAlphaNumeric(const std::string& str) {
-        // Function to check if a string contains only alphanumeric characters
-        for (char c : str) {
-            if (!std::isalnum(c)) {
-                return false;
-            }
-        }
-        return true;
-    }
+    //use for bank account menu //private?
+    bool bankAccountMenu;
+    int currentUserAccounts;
+    int ans;
+
+    //use for adding and removing accounts
+    bool accountExist;
+
+    //vector use to store accounts //private?
+    //vector<string> myVector;
+
+    BankAccount();
+    //copy constructor?
+    ~BankAccount();
+    void loadBankAccount(string userName);
+    void removeBankAccount(string userName, string passWord);
+    void addAccount(string userName);
+    int getActiveAccounts();
+    //void setActiveAccounts(int accAct);
+    //int getAccountNumber();
+    //void setAccountNumber(int number);
+    void showAll();
 };
-
