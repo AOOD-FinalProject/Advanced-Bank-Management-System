@@ -45,19 +45,10 @@ string User::createUser() {
         } while (!isAlphaNumeric(userName));
 
         //check to see if Username is already in text file
-        UsersTextFile.open("Users.txt");
-        if (!UsersTextFile) {
-            cout << "No such file found.\n" << endl;
+        if (userExist(userName) == 1) {
+            cout << "Username already in use. Try again.\n" << endl;
+            matches = true;
         }
-        else {
-            while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, passWord)) {
-                if (userName == user) {
-                    cout << "Username already in use. Try again.\n" << endl;
-                    matches = true;
-                }
-            }
-        }
-        UsersTextFile.close();
     } while (matches == true);
 
     //enter in Password
@@ -79,7 +70,8 @@ string User::createUser() {
         UsersTextFile << userName << ";" << passWord << endl;
         cout << "User successfully created.\n" << endl;
     }
-    //close the file
+    //close the file and return username use to create bank account
+    //can return a userID if wanted but username is already unique
     UsersTextFile.close();
     return userName;
 }
@@ -98,16 +90,14 @@ int User::userExist(string userName) {
     //open file successfully
     //validate Username with Username in text file
     else {
-        while (getline(UsersTextFile, this->userName, ';'), getline(UsersTextFile, passWord)) {
-            if (this->userName == userName) {
-                cout << "Access user account succesfully.\n" << endl;
+        while (getline(UsersTextFile, user, ';'), getline(UsersTextFile, passWord)) {
+            if (user == userName) {
                 //close the file
                 UsersTextFile.close();
                 return 1;
             }
         }
     }
-    cout << "User doesn't exist.\n" << endl;
     //close the file
     UsersTextFile.close();
     return 0;

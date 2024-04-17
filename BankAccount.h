@@ -33,9 +33,9 @@ public:
 	void removeBankAccount(string userName, string passWord);
 	void addAccount(string userName);
 	int getActiveAccounts();
-	void setActiveAccounts(int accAct);
-	int getAccountNumber();
-	void setAccountNumber(int number);
+	//void setActiveAccounts(int accAct);
+	//int getAccountNumber();
+	//void setAccountNumber(int number);
 	void showAll();
 };
 

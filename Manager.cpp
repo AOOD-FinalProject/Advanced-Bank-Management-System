@@ -62,7 +62,11 @@ int Manager::login(string userName, string passWord) {
             cout << "Enter Account Username: " << endl;
             cin >> User::userName;
             if (userExist(User::userName) == 1) {
+                cout << "Access user account succesfully.\n" << endl;
                 loadBankAccount(User::userName);
+            }
+            else {
+                cout << "User doesn't exist.\n" << endl;
             }
             break;
             //show number of active accounts case
