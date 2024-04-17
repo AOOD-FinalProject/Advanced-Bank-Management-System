@@ -1,1 +1,3 @@
-bill;bonn;1;Bill;Checking;100
+bill;bonn
+steve;pass
+molly;pass2
