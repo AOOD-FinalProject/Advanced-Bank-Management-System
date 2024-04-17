@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Advanced_Bank_Management_System.dir/Transaction.cpp.o.d"
   "CMakeFiles/Advanced_Bank_Management_System.dir/User.cpp.o"
   "CMakeFiles/Advanced_Bank_Management_System.dir/User.cpp.o.d"
+  "CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o"
+  "CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o.d"
   "CMakeFiles/Advanced_Bank_Management_System.dir/main.cpp.o"
   "CMakeFiles/Advanced_Bank_Management_System.dir/main.cpp.o.d"
 )

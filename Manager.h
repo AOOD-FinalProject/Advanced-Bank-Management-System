@@ -1,18 +1,18 @@
 #ifndef ADVANCED_BANK_MANAGEMENT_SYSTEM_MANAGER_H
 #define ADVANCED_BANK_MANAGEMENT_SYSTEM_MANAGER_H
 #include "User.h"
+#include "BankAccount.h"
 
-class Manager : public User {
+class Manager : public User, public BankAccount {
 private:
+    //any private?
 public:
-    fstream ManagerTextFile;
+    bool managerMenu;//private?
+
     Manager();
+    //copy constructor?
     ~Manager();
-    void login(string userName, string passWord);
-    void removeAccount(string userName, string accountNumber);
-    void loadAccount(string userName, string accountNumber);
-
+    int login(string userName, string passWord);
 };
-
 
 #endif //ADVANCED_BANK_MANAGEMENT_SYSTEM_MANAGER_H

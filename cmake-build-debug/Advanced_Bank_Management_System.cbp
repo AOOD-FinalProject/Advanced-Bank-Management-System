@@ -104,6 +104,12 @@
 		<Unit filename="/Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/User.h">
 			<Option target="Advanced_Bank_Management_System"/>
 		</Unit>
+		<Unit filename="/Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/ValidInput.cpp">
+			<Option target="Advanced_Bank_Management_System"/>
+		</Unit>
+		<Unit filename="/Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/ValidInput.h">
+			<Option target="Advanced_Bank_Management_System"/>
+		</Unit>
 		<Unit filename="/Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/main.cpp">
 			<Option target="Advanced_Bank_Management_System"/>
 		</Unit>

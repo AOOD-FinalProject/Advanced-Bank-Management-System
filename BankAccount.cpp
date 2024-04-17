@@ -1,26 +1,26 @@
 #include "BankAccount.h"
-#include "vector"
 
 //initialize static integers
 int BankAccount::accountNumber = 0;
 int BankAccount::activeAccounts = 0;
 
 //constructor and deconstructor
-BankAccount::BankAccount() { 
+BankAccount::BankAccount() {
     // initialize account number and active account from file
     AccNumActAccTextFile.open("AccNumActAcc.txt");
-    //fail to open file
     if (!AccNumActAccTextFile) {
-        cout << "No such file found.\n" << endl;
     }
-    //open file successfully
     else {
         AccNumActAccTextFile >> accountNumber;
         AccNumActAccTextFile >> activeAccounts;
     }
-    //close the file
     AccNumActAccTextFile.close();
+
     bankAccountMenu = true;
+    currentUserAccounts = 0;
+    ans = 0;
+    accountExist = false;
+    balance = 0;
 }
 
 BankAccount::~BankAccount() {}
@@ -28,7 +28,6 @@ BankAccount::~BankAccount() {}
 //function for load bank info
 void BankAccount::loadBankAccount(string userName) {
     do {
-        myVector.clear();
         currentUserAccounts = 0;
         //open text file
         BankAccountsTextFile.open("BankAccounts.txt");
@@ -39,17 +38,27 @@ void BankAccount::loadBankAccount(string userName) {
             return;
         }
 
-        //open file successfully
-        //validate Username with Username in text file and load accounts accordingly
+            //open file successfully
+            //validate Username with Username in text file and load accounts accordingly
         else {
+            //display bank account info according to the numbers of bank accounts the user have
+            cout << userName << "'s Bank Account" << endl;
+            cout << "---------------------------" << endl;
             while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, accountType, ';'), getline(BankAccountsTextFile, bal)) {
-                if (userID == userName) {
+                if (currentUserAccounts == 0 && userID == userName) {
+                    storedName = Name;
                     currentUserAccounts++;
-                    myVector.push_back(userID);
-                    myVector.push_back(Name);
-                    myVector.push_back(accNum);
-                    myVector.push_back(accountType);
-                    myVector.push_back(bal);
+                    cout << "Name: " << Name << endl;
+                    cout << "Account Number: " << accNum << endl;
+                    cout << "Account Type: " << accountType << endl;
+                    cout << "Balance: $" << bal << endl;
+                }
+                else if (currentUserAccounts == 1 && userID == userName) {
+                    storedName = Name;
+                    currentUserAccounts++;
+                    cout << "Account Number: " << accNum << endl;
+                    cout << "Account Type: " << accountType << endl;
+                    cout << "Balance: $" << bal << endl;
                 }
             }
         }
@@ -57,26 +66,8 @@ void BankAccount::loadBankAccount(string userName) {
         //close file
         BankAccountsTextFile.close();
 
-        //display bank account info according to the numbers of bank accounts the user have
-        cout << userName << "'s Bank Account" << endl;
-        cout << "---------------------------" << endl;
         if (currentUserAccounts == 0) {
             cout << "No accounts exist for this user." << endl;
-        }
-        else if (currentUserAccounts == 1) {
-            cout << "Name: " << myVector[1] << endl;
-            cout << "Account Number: " << myVector[2] << endl;
-            cout << "Account Type: " << myVector[3] << endl;
-            cout << "Balance: $" << myVector[4] << endl;
-        }
-        else {
-            cout << "Name: " << myVector[1] << endl;
-            cout << "Account Number: " << myVector[2] << endl;
-            cout << "Account Type: " << myVector[3] << endl;
-            cout << "Balance: $" << myVector[4] << endl;
-            cout << "Account Number: " << myVector[7] << endl;
-            cout << "Account Type: " << myVector[8] << endl;
-            cout << "Balance: $" << myVector[9] << endl;
         }
         cout << "---------------------------" << endl;
         cout << "1. Add Account" << endl;
@@ -85,104 +76,35 @@ void BankAccount::loadBankAccount(string userName) {
         cout << "4. Account Summary" << endl;
         cout << "5. Exit\n" << endl;
         cin >> ans;
-        
+
         //case base on input
         switch (ans) {
             //add account case
-        case 1:
-            if (currentUserAccounts == 2) {
-                cout << "User already have both a checking and saving accounts.\n" << endl;
-            }
-            else { addAccount(userName); }
-            break;
-            //withdraw case
-        case 2:
-            cout << "Which account would you like to withdraw from?" << endl;
-            cout << "1. Checking" << endl;
-            cout << "2. Savings" << endl;
-            cout << "3. Exit" << endl;
-            cin >> ans;
-
-            do {
-                switch (ans) {
-                    case 1:
-                        cout << "Enter withdraw amount: $" << endl;
-                        cin >> withdrawAmount;
-                        // Need to call for the users checking balance here
-                        // checkingBalance =
-                        if ( withdrawAmount > checkingBalance) {
-                            cout << "Not enough funds for withdraw of that amount." << endl;
-                        }
-                        else {
-                            checkingBalance -= withdrawAmount;
-                            cout << "New checking balance is: $" << checkingBalance;
-                        }
-                    case 2:
-                        cout << "Enter withdraw amount: $" << endl;
-                        cin >> withdrawAmount;
-                        // Need to call for the users checking balance here
-                        // checkingBalance =
-                        if ( withdrawAmount > savingsBalance) {
-                            cout << "Not enough funds for withdraw of that amount." << endl;
-                        }
-                        else {
-                            savingsBalance -= withdrawAmount;
-                            cout << "New checking balance is: $" << savingsBalance;
-                        }
+            case 1:
+                if (currentUserAccounts == 2) {
+                    cout << "User already have both a checking and saving accounts.\n" << endl;
                 }
-            } while (ans != 3);
-
-            break;
-            //deposit case
-        case 3:
-            cout << "Which account would you like to deposit to?" << endl;
-                cout << "1. Checking" << endl;
-                cout << "2. Savings" << endl;
-                cout << "3. Exit" << endl;
-                cin >> ans;
-
-                do {
-                    switch (ans) {
-                        case 1:
-                            cout << "Enter deposit amount: $" << endl;
-                            cin >> depositAmount;
-                            if (depositAmount <= 0) {
-                                cout << "Please enter a deposit amount greater than 0." << endl;
-                            }
-                            else {
-                                // Need to call for the users checking balance here
-                                // checkingBalance =
-                                checkingBalance += depositAmount;
-                                cout << "New checking balance is: $" << endl;
-                            }
-                        case 2:
-                            cout << "Enter deposit amount: $" << endl;
-                            cin >> depositAmount;
-                            if (depositAmount <= 0) {
-                                cout << "Please enter a deposit amount greater than 0." << endl;
-                            }
-                            else {
-                                // Need to call for the users savings balance here
-                                // savingsBalance =
-                                savingsBalance += depositAmount;
-                                cout << "New savings balance is: $" << endl;
-                            }
-                    }
-                } while (ans != 3);
-            break;
-            //account summary case
-        case 4:
-            break;
-            //exit case
-        case 5:
-            cout << "Returning to previous menu.\n" << endl;
-            return;
-            //default case
-        default:
-            //clear error input due to input type doesn't match and ignore input
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid choice. Please enter a number between 1 and 4.\n" << endl;
+                else { addAccount(userName); }
+                break;
+                //withdraw case
+            case 2:
+                break;
+                //deposit case
+            case 3:
+                break;
+                //account summary case
+            case 4:
+                break;
+                //exit case
+            case 5:
+                cout << "Returning to previous menu.\n" << endl;
+                return;
+                //default case
+            default:
+                //clear error input due to input type doesn't match and ignore input
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Invalid choice. Please enter a number between 1 and 4.\n" << endl;
         }
     } while (bankAccountMenu == true);
 }
@@ -208,8 +130,8 @@ void BankAccount::addAccount(string userName) {
             return;
         }
         else {
-            while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, line, ';'), getline(BankAccountsTextFile, bal)) {
-                if (userID == userName && line == accountType) {
+            while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, accType, ';'), getline(BankAccountsTextFile, bal)) {
+                if (userID == userName && accType == accountType) {
                     cout << "Account type already exist. Try again.\n" << endl;
                     BankAccountsTextFile.close();
                     accountExist = true;
@@ -228,13 +150,14 @@ void BankAccount::addAccount(string userName) {
         } while (!isAlphaNumeric(Name));
     }
     else {
-        Name = myVector[1];
+        Name = storedName;
     }
 
     //enter in balance
-    cout << "Enter Balance: \n" << "Please include cents in your balance(ex: 100.55)" << endl;
-    cin >> balance;
-
+    do {
+        cout << "Enter Balance:" << endl;
+        cin >> balance;
+    } while (!isTwoDecimalPlaces(balance));
 
     //give a bank account number and increase active account
     accountNumber++;
@@ -249,7 +172,7 @@ void BankAccount::addAccount(string userName) {
     if (!BankAccountsTextFile && !AccNumActAccTextFile) {
         cout << "No such file found.\n" << endl;
     }
-    //open file successfully
+        //open file successfully
     else {
         //write to the file
         BankAccountsTextFile << userName << ";" << Name << ";" << accountNumber << ";" << accountType << ";" << fixed << setprecision(2) << balance << endl;
@@ -266,27 +189,12 @@ int BankAccount::getActiveAccounts() {
     return activeAccounts;
 }
 
-//setter function for activeAccounts
-void BankAccount::setActiveAccounts(int accAct) {
-    activeAccounts = accAct;
-}
-
-//getter function for accountNumber
-int BankAccount::getAccountNumber() {
-    return accountNumber;
-}
-
-//setter function for accountNumber
-void BankAccount::setAccountNumber(int number) {
-    accountNumber = number;
-}
-
 //function for manager to remove bank account
 void BankAccount::removeBankAccount(string userName, string accountNumber) {
     accountExist = false;
     //open text file
     BankAccountsTextFile.open("BankAccounts.txt");
-    AccNumActAccTextFile.open("AccNumActAcc.txt");
+    AccNumActAccTextFile.open("AccNumActAcc.txt", ios::out);
     temp.open("temp.txt");
 
     //fail to open file
@@ -295,25 +203,21 @@ void BankAccount::removeBankAccount(string userName, string accountNumber) {
         return;
     }
 
-    //open file successfully
-    //validate Username and accountNumber with Username and accountNumber in text file and remove account accordingly
-    //read account number and active account from file and update them accordingly
+        //open file successfully
+        //validate Username and accountNumber with Username and accountNumber in text file and remove account accordingly
     else {
-        AccNumActAccTextFile >> actAcc;
-        AccNumActAccTextFile >> activeAccounts;
-        AccNumActAccTextFile.close();
-        AccNumActAccTextFile.open("AccNumActAcc.txt", ios::out);
-        while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, line)) {
+        while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, accType)) {
             if (userID == userName && accNum == accountNumber) {//if account match, don't write to temp text file and decrease activeAccounts
                 activeAccounts--;
                 cout << "Remove account successfully.\n" << "Numbers of Active Accounts: " << activeAccounts << "\n" << endl;
                 accountExist = true;
             }
             else {//write any accounts that doesn't match to temp text file
-                temp << userID << ';' << Name << ';' << accNum << ';' << line << endl;
+                temp << userID << ';' << Name << ';' << accNum << ';' << accType << endl;
             }
         }
-        AccNumActAccTextFile << actAcc << endl;
+        //read account number and active account from file and update them accordingly
+        AccNumActAccTextFile << this->accountNumber << endl;
         AccNumActAccTextFile << activeAccounts << endl;
         if (accountExist == false) {//no account remove
             cout << "Remove account fail.\n" << endl;
@@ -333,6 +237,7 @@ void BankAccount::removeBankAccount(string userName, string accountNumber) {
     return;
 }
 
+//function to show all bank accounts
 void BankAccount::showAll() {
     cout << "---------------------------" << endl;
     //open text file
@@ -342,7 +247,7 @@ void BankAccount::showAll() {
         cout << "No such file found.\n" << endl;
         return;
     }
-    //open file successfully
+        //open file successfully
     else {
         while (getline(BankAccountsTextFile, userID, ';'), getline(BankAccountsTextFile, Name, ';'), getline(BankAccountsTextFile, accNum, ';'), getline(BankAccountsTextFile, accountType, ';'), getline(BankAccountsTextFile, bal)) {
             cout << "Username: " << userID << endl;
@@ -356,5 +261,3 @@ void BankAccount::showAll() {
     //close file
     BankAccountsTextFile.close();
 }
-
-

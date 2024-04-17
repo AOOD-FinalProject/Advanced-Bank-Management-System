@@ -225,6 +225,30 @@ User.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Advanced_Bank_Management_System.dir/build.make CMakeFiles/Advanced_Bank_Management_System.dir/User.cpp.s
 .PHONY : User.cpp.s
 
+ValidInput.o: ValidInput.cpp.o
+.PHONY : ValidInput.o
+
+# target to build an object file
+ValidInput.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Advanced_Bank_Management_System.dir/build.make CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o
+.PHONY : ValidInput.cpp.o
+
+ValidInput.i: ValidInput.cpp.i
+.PHONY : ValidInput.i
+
+# target to preprocess a source file
+ValidInput.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Advanced_Bank_Management_System.dir/build.make CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.i
+.PHONY : ValidInput.cpp.i
+
+ValidInput.s: ValidInput.cpp.s
+.PHONY : ValidInput.s
+
+# target to generate assembly for a file
+ValidInput.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Advanced_Bank_Management_System.dir/build.make CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.s
+.PHONY : ValidInput.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -270,6 +294,9 @@ help:
 	@echo "... User.o"
 	@echo "... User.i"
 	@echo "... User.s"
+	@echo "... ValidInput.o"
+	@echo "... ValidInput.i"
+	@echo "... ValidInput.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

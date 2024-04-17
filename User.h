@@ -1,35 +1,25 @@
 #ifndef ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
 #define ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <cctype>
-using namespace std;
+#include "ValidInput.h"
 
-class User {
+class User : public ValidInput {
 private:
-	float balance = 0;
-	static int accountNumber;
+    //any private?
 public:
-	fstream UsersTextFile;
-	ofstream temp;//ADD another text file for accountNumber and activeAccounts?
-	string user;
-	string pass;
-	string accNum;
-	string Name;
-	string accountType;	
-	string bal;
-	string line;
-	bool match = false;
-	bool menu = true;
-	int ans = 0;
-	static int activeAccounts;//private?
-	User();
-	//copy constructor?
-	~User();
-	virtual void login(string userName, string passWord);
-	void create();
-	//getter and setter?
+    fstream TextFile;
+    fstream UsersTextFile;
+    ofstream temp;
+    //string use to read file
+    string userName, passWord, user;
+    bool matches;
+
+    User();
+    //copy constructor?
+    ~User();
+    virtual int login(string userName, string passWord);
+    string createUser();
+    int userExist(string userName);
+    void removeUser(string userName);
 };
 
 #endif //ADVANCED_BANK_MANAGEMENT_SYSTEM_PERSON_H

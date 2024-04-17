@@ -139,13 +139,28 @@ CMakeFiles/Advanced_Bank_Management_System.dir/Transaction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Advanced_Bank_Management_System.dir/Transaction.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/Transaction.cpp -o CMakeFiles/Advanced_Bank_Management_System.dir/Transaction.cpp.s
 
+CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o: CMakeFiles/Advanced_Bank_Management_System.dir/flags.make
+CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o: /Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/ValidInput.cpp
+CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o: CMakeFiles/Advanced_Bank_Management_System.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o -MF CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o.d -o CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o -c /Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/ValidInput.cpp
+
+CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/ValidInput.cpp > CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.i
+
+CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/ValidInput.cpp -o CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.s
+
 # Object files for target Advanced_Bank_Management_System
 Advanced_Bank_Management_System_OBJECTS = \
 "CMakeFiles/Advanced_Bank_Management_System.dir/main.cpp.o" \
 "CMakeFiles/Advanced_Bank_Management_System.dir/Manager.cpp.o" \
 "CMakeFiles/Advanced_Bank_Management_System.dir/BankAccount.cpp.o" \
 "CMakeFiles/Advanced_Bank_Management_System.dir/User.cpp.o" \
-"CMakeFiles/Advanced_Bank_Management_System.dir/Transaction.cpp.o"
+"CMakeFiles/Advanced_Bank_Management_System.dir/Transaction.cpp.o" \
+"CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o"
 
 # External object files for target Advanced_Bank_Management_System
 Advanced_Bank_Management_System_EXTERNAL_OBJECTS =
@@ -155,9 +170,10 @@ Advanced_Bank_Management_System: CMakeFiles/Advanced_Bank_Management_System.dir/
 Advanced_Bank_Management_System: CMakeFiles/Advanced_Bank_Management_System.dir/BankAccount.cpp.o
 Advanced_Bank_Management_System: CMakeFiles/Advanced_Bank_Management_System.dir/User.cpp.o
 Advanced_Bank_Management_System: CMakeFiles/Advanced_Bank_Management_System.dir/Transaction.cpp.o
+Advanced_Bank_Management_System: CMakeFiles/Advanced_Bank_Management_System.dir/ValidInput.cpp.o
 Advanced_Bank_Management_System: CMakeFiles/Advanced_Bank_Management_System.dir/build.make
 Advanced_Bank_Management_System: CMakeFiles/Advanced_Bank_Management_System.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable Advanced_Bank_Management_System"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable Advanced_Bank_Management_System"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Advanced_Bank_Management_System.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
