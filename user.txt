@@ -1,0 +1,7 @@
+bob bobpassword Bob Savings 1718.7 1
+tom tompassword Tpm  23422 2
+Anastasiia uwgb1 Lehova Savings 1234 3
+ana uwgb Anastasia Checking 958.92 4
+nate uwgb Nathan Savings 1000 5
+kay uwgb Kaylani Savings 1000 6
+mikr pass mike Savings 50 7
