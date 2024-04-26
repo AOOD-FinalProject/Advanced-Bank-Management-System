@@ -34,7 +34,7 @@ void BankAccount::loadBankAccount(string userName) {
 
         //fail to open file
         if (!BankAccountsTextFile) {
-            cout << "No such file found.\n" << endl;
+            cout << "Error: No such file found.\n" << endl;
             return;
         }
 
@@ -88,9 +88,11 @@ void BankAccount::loadBankAccount(string userName) {
                 else { addAccount(userName); }
                 break;
             case 2:
+                cout << "Which account would you like ot withdraw from?" << endl;
+                cin >> accountType;
                 cout << "Enter the amount you want to withdraw: ";
                 cin >> amount;
-                transaction.withdraw(userName, amount);
+                transaction.withdraw(userName, amount, accountType);
                 break;
             case 3:
                 cout << "Enter the amount you want to deposit: ";

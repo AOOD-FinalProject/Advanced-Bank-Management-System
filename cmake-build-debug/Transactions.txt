@@ -1,0 +1,16 @@
+Withdrawal by user marissa (4): $100. Current balance is: 1300.56
+Withdrawal by user marissa (5): $100. Current balance is: 9956.78
+Deposite by user marissa (4): $100. Current balance is: 1400.56
+Deposite by user marissa (5): $100. Current balance is: 10056.78
+Deposit by user molly (Account Number: 3 ): $100. Current balance is: 1306.52
+Deposit by user marissa (Account Number: 4 ): $100. Current balance is: 1500.56
+Deposit by user marissa (Account Number: 6 ): $100. Current balance is: 1100.00
+Deposit by user marissa (Account Number: 7 ): $100. Current balance is: 2100.00
+Withdrawal by user marissa (6): $2000. Current balance is: -900.00
+Withdrawal by user marissa (7): $2000. Current balance is: 100.00
+Deposit by user marissa (Account Number: 6 ): $2000. Current balance is: 1100.00
+Deposit by user marissa (Account Number: 7 ): $2000. Current balance is: 2100.00
+Withdrawal by user marissa (7): $2000. Current balance is: 100.00
+Deposit by user marissa (Account Number: 7 ): $2000. Current balance is: 2100.00
+Withdrawal by user marissa (7): $2000. Current balance is: 100.00
+Deposit by user marissa (Account Number: 7 ): $2000. Current balance is: 2100.00

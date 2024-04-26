@@ -1,2 +1,2 @@
-steve;Steve;2;Saving;55.67
-molly;Molly;3;Checking;1206.52
+marissa;Marissa;7;Saving;2100.00
+marissa;Marissa;8;Checking;500.00

@@ -845,4 +845,6 @@ CMakeFiles/Advanced_Bank_Management_System.dir/BankAccount.cpp.o: \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__filesystem/path_iterator.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__filesystem/recursive_directory_iterator.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/__filesystem/u8path.h \
-  /Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/./Transaction.h
+  /Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/./Transaction.h \
+  /Users/michaelhelzer/Desktop/Spring24/Advanced-Object-Oriented-Design/Final-Project/Advanced-Bank-Management-System/Advanced-Bank-Management-System/./User.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/sstream

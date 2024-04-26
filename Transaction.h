@@ -9,7 +9,7 @@
 class Transaction {
 public:
     static void deposit(const string& userName, double amount);
-    static void withdraw(const string& userName, double amount);
+    static void withdraw(const string& userName, double amount, const string& accountType);
     static void displayHistory(const string& userName);
 
 };
