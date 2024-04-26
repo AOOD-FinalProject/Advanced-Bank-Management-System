@@ -132,43 +132,91 @@ void Transaction::withdraw(const string& userName, double amount, const string& 
 
     string line;
     bool userFound = false;
+    int chsvans;
 
-    while (getline(bankAccountsFile, line)) {
-        string userID, Name, accNum, accType, bal;
-        istringstream iss(line);
-        getline(iss, userID, ';');
-        getline(iss, Name, ';');
-        getline(iss, accNum, ';');
-        getline(iss, accType, ';');
-        getline(iss, bal);
+    cout << "1 for Checking, 2 for Saving" << endl;
+    cin >> chsvans;
 
-        double currentBalanceCheck = stod(bal); // string to double
-        bool overdrawCheck = false;
-        if (userID == userName && accType == accountType) {
-            if (amount > currentBalanceCheck) {
-                cout << "Error: Withdraw amount is greater than the current account balance." << endl;
-                overdrawCheck = true;
-            }
+    // Checking option
+    switch (chsvans) {
+        case 1:
+            while (getline(bankAccountsFile, line)) {
+                string userID, Name, accNum, accType, bal;
+                istringstream iss(line);
+                getline(iss, userID, ';');
+                getline(iss, Name, ';');
+                getline(iss, accNum, ';');
+                getline(iss, accType, ';');
+                getline(iss, bal);
 
-            if (!overdrawCheck) {
-                double currentBalance = stod(bal); // string to double
-                currentBalance -= amount;
-                tempFile << userID << ";" << Name << ";" << accNum << ";" << accType << ";" << fixed << setprecision(2) << currentBalance << endl;
-                userFound = true;
+                double currentBalanceCheck = stod(bal); // string to double
+                bool overdrawCheck = false;
+                if (userID == userName && accType == accountType) {
+                    if (amount > currentBalanceCheck) {
+                        cout << "Error: Withdraw amount is greater than the current account balance." << endl;
+                        overdrawCheck = true;
+                    }
 
-                ofstream outFile("transactions.txt", ios::app);
-                if (outFile.is_open()) {
-                    outFile << "Withdrawal by user " << userID << " (" << accNum << "): $" << amount <<". Current balance is: " << fixed << setprecision(2) << currentBalance << endl;
-                    outFile.close();
+                    if (!overdrawCheck) {
+                        double currentBalance = stod(bal); // string to double
+                        currentBalance -= amount;
+                        tempFile << userID << ";" << Name << ";" << accNum << ";" << accType << ";" << fixed
+                                 << setprecision(2) << currentBalance << endl;
+                        userFound = true;
+
+                        ofstream outFile("transactions.txt", ios::app);
+                        if (outFile.is_open()) {
+                            outFile << "Withdrawal by user " << userID << " (" << accNum << "): $" << amount
+                                    << ". Current balance is: " << fixed << setprecision(2) << currentBalance << endl;
+                            outFile.close();
+                        } else {
+                            cout << "Error: Unable to open transaction file for logging." << endl;
+                        }
+                    }
+                } else {
+                    tempFile << line << endl;
                 }
-                else {
-                    cout << "Error: Unable to open transaction file for logging." << endl;
+            }
+            break;
+        case 2:
+            while (getline(bankAccountsFile, line)) {
+                string userID, Name, accNum, accType, bal;
+                istringstream iss(line);
+                getline(iss, userID, ';');
+                getline(iss, Name, ';');
+                getline(iss, accNum, ';');
+                getline(iss, accType, ';');
+                getline(iss, bal);
+
+                double currentBalanceCheck = stod(bal); // string to double
+                bool overdrawCheck = false;
+                if (userID == userName && accType == accountType) {
+                    if (amount > currentBalanceCheck) {
+                        cout << "Error: Withdraw amount is greater than the current account balance." << endl;
+                        overdrawCheck = true;
+                    }
+
+                    if (!overdrawCheck) {
+                        double currentBalance = stod(bal); // string to double
+                        currentBalance -= amount;
+                        tempFile << userID << ";" << Name << ";" << accNum << ";" << accType << ";" << fixed
+                                 << setprecision(2) << currentBalance << endl;
+                        userFound = true;
+
+                        ofstream outFile("transactions.txt", ios::app);
+                        if (outFile.is_open()) {
+                            outFile << "Withdrawal by user " << userID << " (" << accNum << "): $" << amount
+                                    << ". Current balance is: " << fixed << setprecision(2) << currentBalance << endl;
+                            outFile.close();
+                        } else {
+                            cout << "Error: Unable to open transaction file for logging." << endl;
+                        }
+                    }
+                } else {
+                    tempFile << line << endl;
                 }
             }
-        }
-        else {
-            tempFile << line << endl;
-        }
+            break;
     }
 
     bankAccountsFile.close();
