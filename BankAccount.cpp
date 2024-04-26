@@ -76,30 +76,33 @@ void BankAccount::loadBankAccount(string userName) {
         cout << "4. Account Summary" << endl;
         cout << "5. Exit\n" << endl;
         cin >> ans;
+        Transaction transaction;
+        double amount;
 
-        //case base on input
+
         switch (ans) {
-            //add account case
             case 1:
                 if (currentUserAccounts == 2) {
                     cout << "User already have both a checking and saving accounts.\n" << endl;
                 }
                 else { addAccount(userName); }
                 break;
-                //withdraw case
             case 2:
+                cout << "Enter the amount you want to withdraw: ";
+                cin >> amount;
+                transaction.withdraw(userName, amount);
                 break;
-                //deposit case
             case 3:
+                cout << "Enter the amount you want to deposit: ";
+                cin >> amount;
+                transaction.deposit(userName, amount);
                 break;
-                //account summary case
             case 4:
+                transaction.displayHistory(userName);
                 break;
-                //exit case
             case 5:
                 cout << "Returning to previous menu.\n" << endl;
                 return;
-                //default case
             default:
                 //clear error input due to input type doesn't match and ignore input
                 cin.clear();

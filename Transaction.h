@@ -1,16 +1,18 @@
-#pragma once
-#include "ValidInput.h"
+#ifndef TRANSACTION_H
+#define TRANSACTION_H
 
-class Transaction
-{
-private:
+#include "User.h"
+#include <fstream>
+#include <string>
+#include <sstream>
+
+class Transaction {
 public:
-    fstream TransactionsTextFile;
+    static void deposit(const string& userName, double amount);
+    static void withdraw(const string& userName, double amount);
+    static void displayHistory(const string& userName);
 
-    Transaction();
-    //copy constructor?
-    ~Transaction();
-    int withdraw(int withdraw_amount);
-    int deposit(int deposit_amount);
-    void printAccountSummary();
 };
+
+#endif // TRANSACTION_H
+
