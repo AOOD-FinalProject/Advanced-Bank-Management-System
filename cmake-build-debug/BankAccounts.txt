@@ -1,2 +1,4 @@
-marissa;Marissa;7;Saving;2100.00
+marissa;Marissa;7;Saving;3100.00
 marissa;Marissa;8;Checking;500.00
+erin;Erin;9;Checking;11000.00
+erin;Erin;10;Saving;25000.00

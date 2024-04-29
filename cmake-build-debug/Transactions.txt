@@ -14,3 +14,7 @@ Withdrawal by user marissa (7): $2000. Current balance is: 100.00
 Deposit by user marissa (Account Number: 7 ): $2000. Current balance is: 2100.00
 Withdrawal by user marissa (7): $2000. Current balance is: 100.00
 Deposit by user marissa (Account Number: 7 ): $2000. Current balance is: 2100.00
+Withdrawal by user erin (9): $500. Current balance is: 11500.00
+Withdrawal by user erin (9): $500. Current balance is: 11000.00
+Deposit by user marissa (Account Number: 7 ): $1000. Current balance is: 3100.00
+Deposit by user erin (Account Number: 10 ): $1000. Current balance is: 25000.00

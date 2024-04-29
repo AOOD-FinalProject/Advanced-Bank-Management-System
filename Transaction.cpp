@@ -6,7 +6,7 @@
 
 using namespace std; // Added for convenience
 
-void Transaction::deposit(const string& userName, double amount) {
+void Transaction::deposit(const string& userName, double amount, const string& accountType) {
     ifstream bankAccountsFile("BankAccounts.txt");
     ofstream tempFile("temp.txt");
 
@@ -19,8 +19,16 @@ void Transaction::deposit(const string& userName, double amount) {
     bool userFound = false;
     int chsvans;
 
-    cout << "1 for Checking, 2 for Saving" << endl;
-    cin >> chsvans;
+
+    if (accountType == "Checking") {
+        chsvans = 1;
+    }
+    else if(accountType == "Saving") {
+        chsvans = 2;
+    }
+    else
+        cout << "Error: Pick either Checking or Saving." << endl;
+
 
     // Checking option
     switch (chsvans) {
@@ -134,8 +142,17 @@ void Transaction::withdraw(const string& userName, double amount, const string& 
     bool userFound = false;
     int chsvans;
 
-    cout << "1 for Checking, 2 for Saving" << endl;
-    cin >> chsvans;
+
+
+    if (accountType == "Checking") {
+        chsvans = 1;
+    }
+    else if(accountType == "Saving") {
+        chsvans = 2;
+    }
+    else
+        cout << "Error: Pick either Checking or Saving." << endl;
+
 
     // Checking option
     switch (chsvans) {

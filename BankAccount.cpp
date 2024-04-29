@@ -88,13 +88,15 @@ void BankAccount::loadBankAccount(string userName) {
                 else { addAccount(userName); }
                 break;
             case 2:
-                cout << "Which account would you like ot withdraw from?" << endl;
+                cout << "Which account would you like to withdraw from?" << endl;
                 cin >> accountType;
-                cout << "Enter the amount you want to withdraw: ";
+                cout << "Enter the amount you want to withdraw: " << endl;
                 cin >> amount;
                 transaction.withdraw(userName, amount, accountType);
                 break;
             case 3:
+                cout << "Which account would you like to deposit to?" << endl;
+                cin >> accountType;
                 cout << "Enter the amount you want to deposit: ";
                 cin >> amount;
                 transaction.deposit(userName, amount);
