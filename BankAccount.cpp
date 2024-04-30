@@ -5,7 +5,7 @@ int BankAccount::accountNumber = 0;
 int BankAccount::activeAccounts = 0;
 
 //constructor and deconstructor
-BankAccount::BankAccount() { 
+BankAccount::BankAccount() {
     // initialize account number and active account from file
     AccNumActAccTextFile.open("AccNumActAcc.txt");
     if (!AccNumActAccTextFile) {
@@ -34,7 +34,7 @@ void BankAccount::loadBankAccount(string userName) {
 
         //fail to open file
         if (!BankAccountsTextFile) {
-            cout << "No such file found.\n" << endl;
+            cout << "Error: No such file found.\n" << endl;
             return;
         }
 
@@ -76,30 +76,59 @@ void BankAccount::loadBankAccount(string userName) {
         cout << "4. Account Summary" << endl;
         cout << "5. Exit\n" << endl;
         cin >> ans;
-        
-        //case base on input
+
+        //Transaction transaction; //i dont think we need this
+        //double amount; // move to transaction class
+
         switch (ans) {
-            //add account case
         case 1:
             if (currentUserAccounts == 2) {
                 cout << "User already have both a checking and saving accounts.\n" << endl;
             }
             else { addAccount(userName); }
             break;
-            //withdraw case
         case 2:
+            /*cout << "Which account would you like to withdraw from?" << endl;
+            cin >> accountType;*/
+            do {
+                cout << "Which account would you like to withdraw from?" << endl;
+                cin >> accountType;
+                if (accountType != "Checking" && accountType != "Saving") {
+                    cout << "Enter only Checking or Saving. Try again.\n" << endl;
+                }
+            } while (accountType != "Checking" && accountType != "Saving");
+            //cout << "Enter the amount you want to withdraw: " << endl;
+            //cin >> Transaction::amount;//changed
+            do {
+                cout << "Enter the amount you want to withdraw: ";
+                cin >> Transaction::amount;
+            } while (!isTwoDecimalPlaces(Transaction::amount));
+            withdraw(userName, Transaction::amount, accountType);//changed
             break;
-            //deposit case
         case 3:
+            /*cout << "Which account would you like to deposit to?" << endl;
+            cin >> accountType;*/
+            do {
+                cout << "Which account would you like to withdraw from?" << endl;               
+                cin >> accountType;
+                if (accountType != "Checking" && accountType != "Saving") {
+                    cout << "Enter only Checking or Saving. Try again.\n" << endl;
+                }
+            } while (accountType != "Checking" && accountType != "Saving");
+            /*cout << "Enter the amount you want to deposit: ";
+            cin >> amount;*/
+            do {
+                cout << "Enter the amount you want to deposit: ";
+                cin >> Transaction::amount;
+            } while (!isTwoDecimalPlaces(Transaction::amount));
+            deposit(userName, Transaction::amount, accountType);
             break;
-            //account summary case
         case 4:
+            displayHistory(userName);
             break;
-            //exit case
         case 5:
             cout << "Returning to previous menu.\n" << endl;
             return;
-            //default case
         default:
             //clear error input due to input type doesn't match and ignore input
             cin.clear();
